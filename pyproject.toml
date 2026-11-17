@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 authors = [
     { name = "Jeremias Kalmari", email = "jeremias.jt.kalmari@student.jyu.fi" }
-    { name = "Miika Brigatti", email = "mimabrig@student.jyu.fi" }
+    ,{ name = "Miika Brigatti", email = "mimabrig@student.jyu.fi" }
 ]
 requires-python = ">=3.14"
 dependencies = []
