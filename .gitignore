@@ -1,0 +1,6 @@
+# Virtuaaliympäristö
+.venv/
+
+# Pythonin välimuistitiedostot
+__pycache__/
+*.pyc
