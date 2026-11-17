@@ -1,0 +1,8 @@
+[run]
+source = src
+
+# Tässä määritellää, mitä coverage testikattavuus ottaa mukaansa.
+# muita avainsanoja sourcen "ota nämä kaikki" lisäksi
+# omit "elä ota näitä"
+# include "ota tämä vain"
+# include ja source ei toimi yhdessä
