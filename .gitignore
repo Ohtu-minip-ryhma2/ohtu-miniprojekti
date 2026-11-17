@@ -4,3 +4,5 @@
 # Pythonin välimuistitiedostot
 __pycache__/
 *.pyc
+# Joitain varmuuskopioita
+*.OLD
