@@ -18,7 +18,7 @@ def tulosta_viitteet(viitteet):
 
     for viite in viitteet:
         print(f"Kirjoittajat: {viite['author']}")
-        print(f"Otsikko: {viite['author']}")
+        print(f"Otsikko: {viite['title']}")
         print(f"Vuosi: {viite['year']}")
         print(f"Julkaisu: {viite['publisher']}")
         print()
