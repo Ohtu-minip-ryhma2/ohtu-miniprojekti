@@ -6,3 +6,5 @@ __pycache__/
 *.pyc
 # Joitain varmuuskopioita
 *.OLD
+# Ei haluta ainakaan vielä databasea tänne
+*.db

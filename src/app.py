@@ -1,6 +1,9 @@
 class App:
-    def __init__(self, io):
+    def __init__(self, io, tietokanta, tulostus):
         self.io = io
+        self.tietokanta = tietokanta
+        self.tulostus = tulostus
+
     # Pääsilmukka, joka kysyy komentoja kunnes käyttäjä lopettaa
     def run(self):
         while True:
@@ -12,7 +15,12 @@ class App:
                 break
 
             if command == "lisää":
-                self.lisaa_viite()
+                viite = self.lisaa_viite()
+                try:
+                    self.tietokanta.lisaa_viite(viite)
+                    self.io.write("Viitteen tiedot hyväksytty.")
+                except Exception as e:
+                    self.io.write(f"Virhe lisättäessä viitettä: {e}")
 
             elif command == "tulosta":
                 self.io.write("Ei tulosta mitään")
@@ -49,18 +57,20 @@ class App:
         author = self.kysy_pakollinen("Kirjoittaja: ")
         title = self.kysy_pakollinen("Otsikko: ")
         year = self.kysy_vuosi()
-        journal = self.kysy_pakollinen("Lehti/julkaisu: ")
+        #journal = self.kysy_pakollinen("Lehti/julkaisu: ")
+        publisher = self.kysy_pakollinen("Julkaisija: ")
 
         viite = {
 	    # Kootaan annetut tiedot
+        # muutettu että on yhteensopiva tietokanta.py kanssa
+        # TODO keskustellaan, mitä kaikkiea pitää olla tässä
             "type": "article",
             "author": author,
             "title": title,
             "year": year,
-            "journal": journal
+            "publisher": publisher
         }
 
-        self.io.write("Viitteen tiedot hyväksytty.")
-
+    
         # Palautetaan viite
         return viite

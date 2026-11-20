@@ -1,12 +1,14 @@
 from app import App
 from console_io import ConsoleIO
-
+from tietokanta import Tietokanta
+from tulostus import Tulostus
 def main():
     """konstruoidaan tarvittavat luokat ja annetaan eteenpäin, lopuksi app käyntiin"""
     console_io = ConsoleIO()
-    app = App(console_io)
+    tietokanta = Tietokanta()
+    tulostus = Tulostus(console_io)
+    app = App(console_io, tietokanta, tulostus)
     app.run()
 
-# tämä on ainakin testejä varten, mutta ilmeisesti täyttää myös muita pythinin standardeja vaatiuksia.
 if __name__ == "__main__":
     main()

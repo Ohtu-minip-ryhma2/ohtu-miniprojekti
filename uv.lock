@@ -12,6 +12,15 @@ wheels = [
 ]
 
 [[package]]
+name = "click"
+version = "8.5.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/45/37/edbf1b0707709013c0cf2e8317e03d97ed29bf4cac709fe328904ae92a38/click-8.5.1.tar.gz", hash = "sha256:9bbfada76703fd1d784b83eea012e3e8c6a001a876543ef104fa56aaaeb072b4", size = 399151, upload-time = "2026-11-06T17:37:01.021Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/31/7d/164b7ffc8624fe9efb4221bf9af485d5c1e41b9ae118045d2b6dc5457d8b/click-8.5.1-py3-none-any.whl", hash = "sha256:8bb5376d2006950386f8c6427613334a2acadc5f559cb80e638d00b4df957e37", size = 126163, upload-time = "2026-11-06T17:36:59.287Z" },
+]
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 source = { registry = "https://pypi.org/simple" }
@@ -146,12 +155,33 @@ wheels = [
 ]
 
 [[package]]
+name = "markdown-it-py"
+version = "4.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "mdurl" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/16/fc/cee2c45553c9a9bf77d8b0c391560c556d7ed756b1f0bb35eb5d48db09ea/markdown_it_py-4.3.0.tar.gz", hash = "sha256:91a58fa5b72c71a40cf7177250fd767480d7a2bb3ac426ccfb76fb90305fdaaa", size = 242701, upload-time = "2026-11-10T16:18:30.467Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c9/31/5f0ac2f1a1c67423c995c731a11cd4ad05d081a2be969d74f868bdb9cc70/markdown_it_py-4.3.0-py3-none-any.whl", hash = "sha256:7aa1511a46c39138de78d9eba92ce47e63124d8003fc98b3a351909e04239efa", size = 96951, upload-time = "2026-11-10T16:18:28.975Z" },
+]
+
+[[package]]
 name = "mccabe"
 version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e7/ff/0ffefdcac38932a54d2b5eed4e0ba8a408f215002cd178ad1df0f2806ff8/mccabe-0.7.0.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325", size = 9658, upload-time = "2022-01-24T01:14:51.113Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/27/1a/1f68f9ba0c207934b35b86a8ca3aad8395a3d6dd7921c0686e23853ff5a9/mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e", size = 7350, upload-time = "2022-01-24T01:14:49.62Z" },
+]
+
+[[package]]
+name = "mdurl"
+version = "0.1.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec958cb99bd3efefba235e65cdeb9c84d24a8293ba1d90/mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba", size = 8729, upload-time = "2022-08-14T12:40:10.846Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8", size = 9979, upload-time = "2022-08-14T12:40:09.779Z" },
 ]
 
 [[package]]
@@ -173,6 +203,7 @@ dev = [
     { name = "coverage" },
     { name = "pylint" },
     { name = "pytest" },
+    { name = "robotcode" },
 ]
 
 [package.metadata]
@@ -182,6 +213,7 @@ dev = [
     { name = "coverage", specifier = ">=7.17.3" },
     { name = "pylint", specifier = ">=4.1.4" },
     { name = "pytest", specifier = ">=9.2.0" },
+    { name = "robotcode", specifier = ">=2.8.0" },
 ]
 
 [[package]]
@@ -255,10 +287,106 @@ wheels = [
 ]
 
 [[package]]
+name = "rich"
+version = "15.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "markdown-it-py" },
+    { name = "pygments" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c0/8f/0722ca900cc807c13a6a0c696dacf35430f72e0ec571c4275d2371fca3e9/rich-15.0.0.tar.gz", hash = "sha256:edd07a4824c6b40189fb7ac9bc4c52536e9780fbbfbddf6f1e2502c31b068c36", size = 230680, upload-time = "2026-04-12T08:24:00.75Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/82/3b/64d4899d73f91ba49a8c18a8ff3f0ea8f1c1d75481760df8c68ef5235bf5/rich-15.0.0-py3-none-any.whl", hash = "sha256:33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb", size = 310654, upload-time = "2026-04-12T08:24:02.83Z" },
+]
+
+[[package]]
+name = "robotcode"
+version = "2.8.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "robotcode-core" },
+    { name = "robotcode-plugin" },
+    { name = "robotcode-robot" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/32/8d/ec077aa7a3f843a19db1bfdf438f62b635571f104e68fc7bf2d51a286c7a/robotcode-2.8.0.tar.gz", hash = "sha256:da7e84dd7216a4c01b67168b5b299a0964c062a8a812adfc044ae1720e34f773", size = 188888, upload-time = "2026-10-26T01:53:48.354Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/78/34/e4b67aaba2d5881e2a777982f9b7124920e4379fee50c2563f6deb7958cd/robotcode-2.8.0-py3-none-any.whl", hash = "sha256:72d8ea995512e92eb9ebde3347b0fe4f50f0a4ec27eabb0c314ee108b798e154", size = 20219, upload-time = "2026-10-26T01:53:58.394Z" },
+]
+
+[[package]]
+name = "robotcode-core"
+version = "2.8.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/12/ea/477274ba4e6a26b0b2258ba989d75d624c9d6a8bcd4ea8b3108e28c7009f/robotcode_core-2.8.0.tar.gz", hash = "sha256:31b5a38edba888adbd31ab1bd54d5cab9a5c049a0f124b5c9f379ba6db99be43", size = 75562, upload-time = "2026-10-26T01:54:03.78Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fc/88/ee716c8ab0c54fe712fcd22cbc8b68bd2af9c302f1dfb350b36b638f82b6/robotcode_core-2.8.0-py3-none-any.whl", hash = "sha256:dc49ccea68fff23c9bdbb7781aa3e14f2bbc8f36562cf1504dde3b363058625e", size = 82748, upload-time = "2026-10-26T01:53:52.667Z" },
+]
+
+[[package]]
+name = "robotcode-plugin"
+version = "2.8.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "click" },
+    { name = "colorama" },
+    { name = "pluggy" },
+    { name = "rich" },
+    { name = "tomli-w" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/eb/ba/64279b9533afdc310247da11ac76c6c905bc5007b355555c71a9398940a2/robotcode_plugin-2.8.0.tar.gz", hash = "sha256:7e62970534ad01a126546d132f4cc6fb613a75840a7a2b0bffc408b460a94ba5", size = 16323, upload-time = "2026-10-26T01:54:05.138Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/71/d1/3e656a5756f54674ddecb4805822eef867f00091ef2d5fc3160983fbb801/robotcode_plugin-2.8.0-py3-none-any.whl", hash = "sha256:5ebe3a9c2da5f3f66efcfd27057c67c62641d91e73c2ce7684e52e8e98c9c1a3", size = 17448, upload-time = "2026-10-26T01:53:49.565Z" },
+]
+
+[[package]]
+name = "robotcode-robot"
+version = "2.8.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "platformdirs" },
+    { name = "robotcode-core" },
+    { name = "robotframework" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/0b/92/2605eabc70b037e284e8abeecd5137391aadb43ceb6eab2420d5fc631e20/robotcode_robot-2.8.0.tar.gz", hash = "sha256:438376896040757429f5be40b1de58f54286f1769e41229c93213912183a8031", size = 214354, upload-time = "2026-10-26T01:54:05.878Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c4/ab/5d99d8d28e81eb4e3021982a37f0dd653adf46e26c2f3e17b4f5d2a322ae/robotcode_robot-2.8.0-py3-none-any.whl", hash = "sha256:d992937d2d2f949f267b19d09ebce825a6dc0523f3fb7a55690bb1487488c3e4", size = 234506, upload-time = "2026-10-26T01:54:00.887Z" },
+]
+
+[[package]]
+name = "robotframework"
+version = "7.5.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/99/82/c7e3f8acb173c63e17cbdffdadf95a55520c0139cc548ce9ac963424361b/robotframework-7.5.1.tar.gz", hash = "sha256:00f63dc7b0477a137f8a9c1f2e14db8084a4d187a76f3fec6c2567875c32b932", size = 686670, upload-time = "2026-11-02T21:35:34.339Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2b/a3/6d528a8ac42a03ba4b9f6642b80ea37de2d18086d458c044bb6a6a8df5b9/robotframework-7.5.1-py3-none-any.whl", hash = "sha256:a46196098d92a30cb8b68c426d8d9a35b048d7936fc2cd9959b8c5c6f57524c8", size = 844474, upload-time = "2026-11-02T21:35:32.447Z" },
+]
+
+[[package]]
+name = "tomli-w"
+version = "1.2.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/19/75/241269d1da26b624c0d5e110e8149093c759b7a286138f4efd61a60e75fe/tomli_w-1.2.0.tar.gz", hash = "sha256:2dd14fac5a47c27be9cd4c976af5a12d87fb1f0b4512f81d69cce3b35ae25021", size = 7184, upload-time = "2025-01-15T12:07:24.262Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl", hash = "sha256:188306098d013b691fcadc011abd66727d3c414c571bb01b1a174ba8c983cf90", size = 6675, upload-time = "2025-01-15T12:07:22.074Z" },
+]
+
+[[package]]
 name = "tomlkit"
 version = "0.15.2"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/08/72/fc01563df95c189a9f65850096bdc205bc2fe37da6c740cd64afaf18d07e/tomlkit-0.15.2.tar.gz", hash = "sha256:83e32755ba1d20d9340bd069ee97e9f6232ba2346b63ffcba425de01f7e327a6", size = 190522, upload-time = "2026-10-16T04:07:08.166Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/da/46/7d84138a60a8bd796825b2d38ebe92d0d16501ca57d501b7c5d677401bbc/tomlkit-0.15.2-py3-none-any.whl", hash = "sha256:05562412163a3037b94497385fb7f9204c637bc605af7a48199e41cf2272f437", size = 52225, upload-time = "2026-10-16T04:07:09.216Z" },
+]
+
+[[package]]
+name = "typing-extensions"
+version = "4.16.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f6/cc/6253133b5bb138fc3306cebfbda2c520f545d36b5be2c7255cc528bb45d6/typing_extensions-4.16.0.tar.gz", hash = "sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5", size = 113555, upload-time = "2026-07-02T08:40:05.92Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl", hash = "sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8", size = 45571, upload-time = "2026-07-02T08:40:04.659Z" },
 ]

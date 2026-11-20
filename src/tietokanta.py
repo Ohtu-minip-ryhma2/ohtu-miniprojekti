@@ -21,8 +21,17 @@ class Tietokanta:
         """)
         self.connection.commit()
 
-    # Jos lisätään uusi viite tietokantaan
-    def lisaa_viite(self, title, author, year, publisher):
+    # Muutetaan dictionaarinen viite tietokantaan sopivaksi ja kutsutaan
+    # kirjoita_viite-funktiota
+    def lisaa_viite(self, viite):
+        self.kirjoita_viite(
+            title=viite["title"],
+            author=viite["author"],
+            year=viite["year"],
+            publisher=viite["publisher"]
+        )
+
+    def kirjoita_viite(self, title, author, year, publisher):
         self.cursor.execute("""
             INSERT INTO viitteet (title, author, year, publisher)
             VALUES (?, ?, ?, ?)
