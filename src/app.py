@@ -23,7 +23,12 @@ class App:
                     self.io.write(f"Virhe lisättäessä viitettä: {e}")
 
             elif command == "tulosta":
-                self.io.write("Ei tulosta mitään")
+                try:
+                    viitteet = self.tietokanta.hae_viitteet()
+                    self.tulostus.tulosta_viitteet(viitteet)
+                except Exception as e:
+                    self.io.write(f"Virhe tulostaessa viitteitä: {e}")
+
 
             else:
                 self.io.write("Tuntematon komento")

@@ -6,7 +6,7 @@ class Tulostus:
     def __init__(self, Io):
         self.io = Io
         
-    def tulosta_viitteet(viitteet):
+    def tulosta_viitteet(self, viitteet):
         """Tulostaa viitteet terminaaliin.
 
         Jokainen viite tulostetaan kenttä kerrallaan omille riveilleen ja
@@ -19,15 +19,18 @@ class Tulostus:
 
         Args:
             viitteet: Lista sanakirjoja, jossa avaimina "author", "title" "year" "publisher"
-            TO DO: yhdistetään SQL kantaan, tässä kömpelösti tehty tynkä alkuun.
         """
+        if not viitteet:
+            self.io.write("Viitteitä ei löydy")
+            return
 
+        self.io.write("")
         for viite in viitteet:
-            print(f"Kirjoittajat: {viite['author']}")
-            print(f"Otsikko: {viite['title']}")
-            print(f"Vuosi: {viite['year']}")
-            print(f"Julkaisu: {viite['publisher']}")
-            print()
+            self.io.write(f"Kirjoittajat: {viite['author']}")
+            self.io.write(f"Otsikko: {viite['title']}")
+            self.io.write(f"Vuosi: {viite['year']}")
+            self.io.write(f"Julkaisu: {viite['publisher']}")
+            self.io.write("")
 
 
         def luo_bib(tiedosto_nimi, tietokanta):
