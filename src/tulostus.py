@@ -72,7 +72,7 @@ class Tulostus:
 
     def luo_bib_avain(self, viite, kaytetyt_avaimet):
             """Luo viitteelle uniikin avaimen, käyttäen viitteen ensimmäisen nimen 3:a
-            ensimmäistä kirjainta + vuosilukua. Jos vuosiluku on jo käytössä, laitetaan
+            ensimmäistä kirjainta + vuosilukua. Jos avain on jo käytössä, laitetaan
             perään _2, _3 jne. Nimestä poistetaan ääkköset ja muut ei-kirjaimet.
 
             Esim. Matti Virtasen 1993 tehty lähde olisi "Mat1993".
