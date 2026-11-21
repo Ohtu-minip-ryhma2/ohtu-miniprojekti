@@ -6,3 +6,8 @@ class ConsoleIO:
 
     def read(self, prompt):
         return input(prompt)
+
+    def give_stream(self):
+        """Ei tee mitään, mutta mock-luokassa palauttaa streamin johon bib-tiedosto kirjoitetaan"""
+        return None 
+    

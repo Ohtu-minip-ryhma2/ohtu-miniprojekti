@@ -5,6 +5,7 @@ import unicodedata
 class Tulostus:
     def __init__(self, Io):
         self.io = Io
+        self.stream = self.io.give_stream()
         
     def tulosta_viitteet(self, viitteet):
         """Tulostaa viitteet terminaaliin.
@@ -43,6 +44,8 @@ class Tulostus:
             Args:
                 tiedosto_nimi: Halutun .bib tiedoston nimi, ilman .bib päätettä.
                 tietokanta: Tietokanta, josta haetaan.
+                stream: Jos annettu, kirjoitetaan bib-tiedosto streamiin, ei tiedostoon.
+                testejä varten.
             """
 
             viitteet = tietokanta.hae_viitteet()
@@ -64,8 +67,14 @@ class Tulostus:
                 kaytetyt_avaimet.add(avain)
                 Bibtex_viitteet.append(self.muotoile_bib_viite(viite, avain))
 
-            with open(polku, "w", encoding="utf-8") as tiedosto:
-                tiedosto.write("\n".join(Bibtex_viitteet))
+            sisalto = "\n".join(Bibtex_viitteet)
+
+            # Jos stream on annettu, kirjoitetaan bib-tiedosto streamiin, muuten tiedostoon.
+            if self.stream is not None:
+                self.stream.write(sisalto)
+            else:
+                with open(polku, "w", encoding="utf-8") as tiedosto:
+                    tiedosto.write(sisalto)
 
             self.io.write(f"Viitteet tallennettu tiedostoon {polku}")
 

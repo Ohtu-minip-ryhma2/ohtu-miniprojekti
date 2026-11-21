@@ -30,9 +30,12 @@ class App:
                     self.io.write(f"Virhe tulostaessa viitteitä: {e}")
 
             elif command == "bib":
-                nimi = self.kysy_pakollinen("Tiedoston nimi (ilman .bib): ")
-                self.tulostus.luo_bib(nimi, self.tietokanta)
-            
+                try:
+                    nimi = self.kysy_pakollinen("Tiedoston nimi (ilman .bib): ")
+                    self.tulostus.luo_bib(nimi, self.tietokanta)
+                except Exception as e:
+                    self.io.write(f"Virhe tulostettaessa bib-tiedostoa: {e}")
+
             else:
                 self.io.write("Tuntematon komento")
 

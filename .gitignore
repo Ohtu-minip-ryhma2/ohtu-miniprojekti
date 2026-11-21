@@ -13,3 +13,7 @@ __pycache__/
 
 # Ei oteta .bib tiedostojakaan
 *.bib
+
+# Ei oteta robotframeworkin testitiedostoja
+*.xml
+*.html
