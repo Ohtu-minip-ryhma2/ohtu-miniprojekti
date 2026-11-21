@@ -4,7 +4,12 @@
 # Pythonin välimuistitiedostot
 __pycache__/
 *.pyc
+
 # Joitain varmuuskopioita
 *.OLD
+
 # Ei haluta ainakaan vielä databasea tänne
 *.db
+
+# Ei oteta .bib tiedostojakaan
+*.bib

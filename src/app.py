@@ -8,7 +8,7 @@ class App:
     def run(self):
         while True:
             command = self.io.read(
-                "Komento (lisää) viite tai (tulosta) viiteluettelo: "
+                "Komento (lisää) viite, (tulosta) viiteluettelo tai luo (bib) tiedosto: "
             )
 	    # Tyhjä komento lopettaa ohjelman
             if not command:
@@ -29,7 +29,10 @@ class App:
                 except Exception as e:
                     self.io.write(f"Virhe tulostaessa viitteitä: {e}")
 
-
+            elif command == "bib":
+                nimi = self.kysy_pakollinen("Tiedoston nimi (ilman .bib): ")
+                self.tulostus.luo_bib(nimi, self.tietokanta)
+            
             else:
                 self.io.write("Tuntematon komento")
 

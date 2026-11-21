@@ -33,7 +33,7 @@ class Tulostus:
             self.io.write("")
 
 
-        def luo_bib(tiedosto_nimi, tietokanta):
+    def luo_bib(self, tiedosto_nimi, tietokanta):
             """Tekee viitteistä .bib tiedoston
 
             Ei luo tiedostoa, jos tietokannassa ei ole yhtään viitettä.
@@ -48,29 +48,29 @@ class Tulostus:
             viitteet = tietokanta.hae_viitteet()
 
             if not viitteet:
-                print("Viitteitä ei löydy.")
+                self.io.write("Viitteitä ei löydy.")
                 return
 
             polku = Path(f"{tiedosto_nimi}.bib")
             if polku.exists():
-                print(f"Tiedosto {tiedosto_nimi}.bib on jo olemassa. Valitse muu nimi.")
+                self.io.write(f"Tiedosto {polku} on jo olemassa. Valitse muu nimi.")
                 return
 
             kaytetyt_avaimet = set()
             Bibtex_viitteet = []
 
             for viite in viitteet:
-                avain = luo_bib_avain(viite, kaytetyt_avaimet)
+                avain = self.luo_bib_avain(viite, kaytetyt_avaimet)
                 kaytetyt_avaimet.add(avain)
-                Bibtex_viitteet.append(muotoile_bib_viite(viite, avain))
+                Bibtex_viitteet.append(self.muotoile_bib_viite(viite, avain))
 
             with open(polku, "w", encoding="utf-8") as tiedosto:
                 tiedosto.write("\n".join(Bibtex_viitteet))
 
-            print (f"Viitteet tallennettu tiedostoon {polku}")
+            self.io.write(f"Viitteet tallennettu tiedostoon {polku}")
 
 
-        def luo_bib_avain(viite, kaytetyt_avaimet):
+    def luo_bib_avain(self, viite, kaytetyt_avaimet):
             """Luo viitteelle uniikin avaimen, käyttäen viitteen ensimmäisen nimen 3:a
             ensimmäistä kirjainta + vuosilukua. Jos vuosiluku on jo käytössä, laitetaan
             perään _2, _3 jne. Nimestä poistetaan ääkköset ja muut ei-kirjaimet.
@@ -87,8 +87,8 @@ class Tulostus:
             """
             ensimmainen_nimi = viite["author"].split()[0]
 
-            ensimmainen_nimi = unicodedata.normalize("NKFD", ensimmainen_nimi).encode("ascii", "ignore").decode()
-            ensimmainen_nimi = re.sub(r"[^A-Za-Z]", "", ensimmainen_nimi)
+            ensimmainen_nimi = unicodedata.normalize("NFKD", ensimmainen_nimi).encode("ascii", "ignore").decode()
+            ensimmainen_nimi = re.sub(r"[^A-Za-z]", "", ensimmainen_nimi)
 
             pohja = f"{ensimmainen_nimi[:3].capitalize()}{viite['year']}"
             avain = pohja
@@ -101,7 +101,7 @@ class Tulostus:
             return avain
 
 
-        def muotoile_bib_viite(viite, avain):
+    def muotoile_bib_viite(self, viite, avain):
             """ Muotoilee viitteen BibTeX-muotoiseksi.
 
             Args:
