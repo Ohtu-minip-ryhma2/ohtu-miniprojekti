@@ -1,0 +1,25 @@
+name: Robot Framework testit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10.1.0
+        with:
+          python-version: "3.14"
+      - name: Install dependencies
+        run: uv sync
+      - name: Run tests
+        run: uv run robot --outputdir results src/tests/
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-results
+          path: results/
