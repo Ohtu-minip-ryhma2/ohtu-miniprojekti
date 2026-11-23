@@ -1,3 +1,5 @@
+import sys
+
 class App:
     def __init__(self, io, tietokanta, tulostus):
         self.io = io
@@ -8,7 +10,7 @@ class App:
     def run(self):
         while True:
             command = self.io.read(
-                "Komento (lisää) viite, (tulosta) viiteluettelo tai luo (bib) tiedosto: "
+                "Komento (lisää) viite, (tulosta) viiteluettelo tai luo (bib) tiedosto. (exit) lopettaa: "
             )
 	    # Tyhjä komento lopettaa ohjelman
             if not command:
@@ -35,6 +37,9 @@ class App:
                     self.tulostus.luo_bib(nimi, self.tietokanta)
                 except Exception as e:
                     self.io.write(f"Virhe tulostettaessa bib-tiedostoa: {e}")
+
+            elif command == "exit":
+                sys.exit()
 
             else:
                 self.io.write("Tuntematon komento")

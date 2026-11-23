@@ -17,3 +17,8 @@ __pycache__/
 # Ei oteta robotframeworkin testitiedostoja
 *.xml
 *.html
+
+# Ei oteta .exen rakennukseen liittyviä tiedostoja
+build/
+dist/
+*.spec
