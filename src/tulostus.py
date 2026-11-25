@@ -26,12 +26,43 @@ class Tulostus:
             return
 
         self.io.write("")
-        for viite in viitteet:
+        jarjestetyt_viitteet = self.jarjesta_viitteet(viitteet)
+        for viite in jarjestetyt_viitteet:
             self.io.write(f"Kirjoittajat: {viite['author']}")
             self.io.write(f"Otsikko: {viite['title']}")
             self.io.write(f"Vuosi: {viite['year']}")
             self.io.write(f"Julkaisu: {viite['publisher']}")
             self.io.write("")
+
+
+    def sukunimi_jarjestys(self, viite):
+         """Palauttaa jarjesta_viitteed sortedissä käytettävän verrokin.
+
+         Args:
+            viite: Viite jota tutkitaan
+
+        Returns:
+            verrokki
+         """
+
+         ensimmainen_kirjoittaja = viite["author"].split(",")[0].strip()
+         osat = ensimmainen_kirjoittaja.split()
+         sukunimi = osat[-1]
+         etunimet = " ".join(osat[:-1])
+
+         return (sukunimi.casefold(), etunimet.casefold(), viite["title"].casefold())
+
+    def jarjesta_viitteet(self, viitteet):
+         """Järjestää viitteet aakkosjärjestykseen ensin ensimmäisen kirjoittajan sukunimen, sitten etunimen,
+         sitten viitteen otsikon mukaan. Isoilla ja pienillä kirjaimilla ei ole merkitystä.
+
+         Args:
+            viitteet: Lista sanakirjoja.
+
+         Returns:
+            Uusi, järjestetty lista.
+         """
+         return sorted(viitteet, key=self.sukunimi_jarjestys)
 
 
     def luo_bib(self, tiedosto_nimi, tietokanta):
