@@ -9,16 +9,15 @@ Pois
     Input  ${EMPTY}
 
 Lisätään Viitteen Tiedot
-    [Arguments]    ${author}    ${title}    ${year}    ${publisher}
+    [Arguments]    ${author}    ${title}    ${year}    ${publisher}  ${pages}=${EMPTY}  ${tags}=${EMPTY}
     Input  lisää
     Input  ${author}
     Input  ${title}
     Input  ${year}
     Input  ${publisher}
+    Input  ${pages}
+    input  ${tags}
 
-Tarkista Viitteet
-    [Arguments]    ${author}    ${title}    ${year}    ${publisher}
-    Output Should Contain   Kirjoittajat: ${author}
-    Output Should Contain   Otsikko: ${title}
-    Output Should Contain   Vuosi: ${year}
-    Output Should Contain   Julkaisu: ${publisher} 
+Tarkista Viitteet Ilman Sivuja tai Tageja
+    [Arguments]    ${author}    ${title}    ${year}    ${publisher}  ${pages}=${EMPTY}  ${tags}=${EMPTY}
+    Output Should Contain   [1] ${author}. ${title} ${publisher}, ${year}.

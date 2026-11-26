@@ -10,13 +10,10 @@ class Tulostus:
     def tulosta_viitteet(self, viitteet):
         """Tulostaa viitteet terminaaliin.
 
-        Jokainen viite tulostetaan kenttä kerrallaan omille riveilleen ja
-        viitteiden väliin jätetaan tyhjä rivi. Esimerkki tuloste:
+        Viitteet tulostetaan samalla tyylillä kuin mallissa. Numeroidussa listassa, viitteiden
+        välillä tyhjä rivi. Lopussa [] sisällä tägit Esimerkki tulosteesta:
 
-        Kirjoittajat: Matti Meikalainen, Aku Ankka
-        Otsikko: Ankkalinnan asuntojen hintojen muutos välilla 1960-2000
-        Vuosi: 2010
-        Julkaisu: Ankkalinnan Tiede
+        [1] Matti Meikäläinen and Aku Ankka. Astronomian uusi suosio. Ankkalinnan tiede, 55-60, 2020 [Astronomia]
 
         Args:
             viitteet: Lista sanakirjoja, jossa avaimina "author", "title" "year" "publisher"
@@ -27,13 +24,36 @@ class Tulostus:
 
         self.io.write("")
         jarjestetyt_viitteet = self.jarjesta_viitteet(viitteet)
-        for viite in jarjestetyt_viitteet:
-            self.io.write(f"Kirjoittajat: {viite['author']}")
-            self.io.write(f"Otsikko: {viite['title']}")
-            self.io.write(f"Vuosi: {viite['year']}")
-            self.io.write(f"Julkaisu: {viite['publisher']}")
+
+        for numero, viite in enumerate(jarjestetyt_viitteet, start=1):
+            listanumero = f"[{numero}] "
+            teksti = listanumero + self.muotoile_tulostettava_viite(viite)
+            self.io.write(teksti)
             self.io.write("")
 
+    def muotoile_tulostettava_viite(self, viite):
+         """Muotoilee viitteen tekstiksi, järjestys: Kirjoittajat, otsikko, julkaisija, sivut, vuosi, [tagit]
+         TO DO: Katsotaan miten tietokannassa tallennetaan tagit
+         """
+         kirjoittajat = self.muotoile_kirjoittajat(viite['author'])
+
+         otsikko = viite['title']
+
+         loppuosat = [viite['publisher']]
+         if viite.get('pages'):
+              loppuosat.append(viite['pages'])
+         loppuosat.append(str(viite['year']))
+         if viite.get('tags'):
+              loppuosat.append(f"[{viite['tags']}]")
+
+         return f"{kirjoittajat}. {otsikko} {', '.join(loppuosat)}."
+
+
+    def muotoile_kirjoittajat(self, kirjoittajat):
+         """Muotoilee kirjoittajat muotoon "Etunimi1 Sukunimi1, Etunimi2 Sukunimi2, ... and Etunimin Sukunimin"
+         TO DO: Katsotaan miten tietokannasta tulee nämä.
+         """
+         return kirjoittajat
 
     def sukunimi_jarjestys(self, viite):
          """Palauttaa jarjesta_viitteed sortedissä käytettävän verrokin.

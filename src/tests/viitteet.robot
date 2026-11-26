@@ -6,7 +6,8 @@ Testataan että voidaan mennä lisäämään viite
     Lisätään Viitteen Tiedot    J.K. Rowling    Harry Potter ja viisasten kivi    1997    Otava
     Pois
     Run Application
-    Output Should Contain    Lisätään uusi artikkeliviite
+    Output Should Contain    Lisätään uusi viite
+    Output Should Contain    Vapaaehtoiset kentät voi ohittaa painamalla Enteriä.
     Output Should Contain    Viitteen tiedot hyväksytty.
 
 Testataan että lisätty viite tulostuu oikein
@@ -14,7 +15,7 @@ Testataan että lisätty viite tulostuu oikein
     Input  tulosta
     Pois
     Run Application
-    Tarkista Viitteet    J.K. Rowling    Harry Potter ja viisasten kivi    1997    Otava
+    Tarkista Viitteet Ilman Sivuja tai Tageja   J.K. Rowling    Harry Potter ja viisasten kivi    1997    Otava
 
 Testataan että saadaan bib tiedosto
     Lisätään Viitteen Tiedot    J.K. Rowling    Harry Potter ja viisasten kivi    1997    Otava
