@@ -1,4 +1,5 @@
 import sys
+import re
 
 class App:
     def __init__(self, io, tietokanta, tulostus):
@@ -66,27 +67,78 @@ class App:
                 "Virhe: Vuoden täytyy olla nelinumeroinen luku."
             )
 
+    def kysy_tagit(self):
+        # Kysytään vapaaehtoiset tagit pilkulla eroteltuna
+        vastaus = self.kysy_vapaaehtoinen(
+            "Tagit (pilkulla eroteltuna): "
+        )
+
+        # Poistetaan ylimääräiset välilyönnit ja tyhjät tagit
+        tagit = [
+            tagi.strip().lower()
+            for tagi in vastaus.split(",")
+            if tagi.strip()
+        ]
+
+        return tagit
+
+    def kysy_vapaaehtoinen(self, kysymys):
+        # Kysytään tieto, jonka voi jättää tyhjäksi
+        return self.io.read(kysymys).strip()
+    
+    def kysy_sivunumerot(self):
+        # Kysytään vapaaehtoiset sivunumerot
+        while True:
+            pages = self.kysy_vapaaehtoinen(
+                "Sivunumerot (esim. 10-25): "
+            )
+
+            if not pages:
+                return ""
+
+            if re.fullmatch(r"[0-9]+", pages):
+                return pages
+
+            valit = re.fullmatch(
+                r"([0-9]+)\s*[-–]{1,2}\s*([0-9]+)", pages
+            )
+
+            if valit:
+                alku, loppu = valit.groups()
+
+                if int(alku) <= int(loppu):
+                    return f"{alku}--{loppu}"
+
+            self.io.write(
+                "Virhe: Anna kelvollinen sivunumero tai sivuväli."
+            )
+
     def lisaa_viite(self):
         # Kysytään käyttäjältä pakolliset tiedot viitteeseen
-        self.io.write("Lisätään uusi artikkeliviite")
+        self.io.write("Lisätään uusi viite")
 
         author = self.kysy_pakollinen("Kirjoittaja: ")
         title = self.kysy_pakollinen("Otsikko: ")
         year = self.kysy_vuosi()
-        #journal = self.kysy_pakollinen("Lehti/julkaisu: ")
         publisher = self.kysy_pakollinen("Julkaisija: ")
 
+        # Kysytään vapaaehtoiset tiedot
+        self.io.write(
+            "Vapaaehtoiset kentät voi ohittaa painamalla Enteriä."
+        )
+
+        pages = self.kysy_sivunumerot()
+        tags = self.kysy_tagit()
+
+        # Kootaan annetut tiedot
         viite = {
-	    # Kootaan annetut tiedot
-        # muutettu että on yhteensopiva tietokanta.py kanssa
-        # TODO keskustellaan, mitä kaikkiea pitää olla tässä
             "type": "article",
             "author": author,
             "title": title,
             "year": year,
-            "publisher": publisher
+            "publisher": publisher,
+            "pages": pages,
+            "tags": tags
         }
 
-    
-        # Palautetaan viite
         return viite
