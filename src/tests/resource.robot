@@ -1,23 +1,38 @@
 *** Settings ***
-Library           ../AppLibrary.py
+Library    ../AppLibrary.py
 
 *** Keywords ***
 Tulosta Viitteet
-    Input  tulosta
+    Input    tulosta
 
-Pois
-    Input  ${EMPTY}
+Kirjoita Komentoriville
+    [Arguments]    ${text}
+    Input    ${text}
+
+Pois Komentoriviltä
+    Input    ${EMPTY}
+
+Tulostuksessa Pitäisi Olla
+    [Arguments]    ${text}
+    Output Should Contain    ${text}
+
+Käynnistä Ohjelma
+    Run Application
+
+Tulostuksessa Ei Pitäisi Olla
+    [Arguments]    ${text}
+    Output Should Not Contain    ${text}
 
 Lisätään Viitteen Tiedot
-    [Arguments]    ${author}    ${title}    ${year}    ${publisher}  ${pages}=${EMPTY}  ${tags}=${EMPTY}
-    Input  lisää
-    Input  ${author}
-    Input  ${title}
-    Input  ${year}
-    Input  ${publisher}
-    Input  ${pages}
-    input  ${tags}
+    [Arguments]    ${author}    ${title}    ${year}    ${publisher}    ${pages}=${EMPTY}    ${tags}=${EMPTY}
+    Input    ${author}
+    Input    ${title}
+    Input    ${year}
+    Input    ${publisher}
+    Input    ${pages}
+    Input    ${tags}
+    Create Dict For Testing Citation    ${author}    ${title}    ${year}    ${publisher}    ${pages}    ${tags}
 
-Tarkista Viitteet Ilman Sivuja tai Tageja
-    [Arguments]    ${author}    ${title}    ${year}    ${publisher}  ${pages}=${EMPTY}  ${tags}=${EMPTY}
-    Output Should Contain   [1] ${author}. ${title} ${publisher}, ${year}.
+Tarkista Viitteet
+    [Arguments]    ${citation_index}
+    Check Citations    ${citation_index}

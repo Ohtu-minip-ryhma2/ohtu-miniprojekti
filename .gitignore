@@ -17,8 +17,19 @@ __pycache__/
 # Ei oteta robotframeworkin testitiedostoja
 *.xml
 *.html
+results/
+
+# Pytest ja testikattavuus
+.pytest_cache/
+.coverage
+.coverage.*
+
 
 # Ei oteta .exen rakennukseen liittyviä tiedostoja
 build/
 dist/
 *.spec
+
+# Jetbrains IDE tiedostoja
+.idea/
+skills/
